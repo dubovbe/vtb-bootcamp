@@ -13,12 +13,6 @@ public class TestSpring {
         MusicPlayer musicPlayer = context.getBean("musicPlayerBean", MusicPlayer.class);
         musicPlayer.playMusic();
 
-        MusicPlayer musicPlayerBySetter = context.getBean("musicPlayerBeanBySetter", MusicPlayer.class);
-        musicPlayerBySetter.playMusic();
-
-        MusicPlayer musicPlayerWithList = context.getBean("musicPlayerWithList", MusicPlayer.class);
-        musicPlayerWithList.playMusicList();
-
         context.close();
     }
 }

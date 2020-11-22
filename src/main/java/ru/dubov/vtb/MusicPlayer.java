@@ -40,6 +40,14 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
+    public void doMyInit() {
+        System.out.println("Music Player initialization...");
+    }
+
+    public void doMyDestroy() {
+        System.out.println("Music Player destruction...");
+    }
+
     public void playMusic() {
         System.out.println("Playing: " + music.getSong());
     }
@@ -50,8 +58,8 @@ public class MusicPlayer {
         }
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return name + " " + volume;
-    }
+    }*/
 }

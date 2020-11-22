@@ -16,7 +16,9 @@
 
 
     <bean id="musicBean1"
-          class="ru.dubov.vtb.ClassicalMusic">
+          class="ru.dubov.vtb.ClassicalMusic"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
     </bean>
     <bean id="musicBean2"
           class="ru.dubov.vtb.PopMusic">
@@ -26,17 +28,22 @@
     </bean>
 
 
-    <bean id = "musicPlayerBean"
-          class="ru.dubov.vtb.MusicPlayer">
-        <constructor-arg ref="musicBean1"/>
+    <bean id="musicPlayerBean"
+          class="ru.dubov.vtb.MusicPlayer"
+          scope="prototype"
+    init-method="doMyInit"
+    destroy-method="doMyDestroy">
+        <constructor-arg ref="musicBean2"/>
     </bean>
-    <bean id = "musicPlayerBeanBySetter"
+    <bean id="musicPlayerBeanBySetter"
           class="ru.dubov.vtb.MusicPlayer">
         <property name="music" ref="musicBean1"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
-    <bean id = "musicPlayerWithList" class="ru.dubov.vtb.MusicPlayer">
+    <bean id="musicPlayerWithList"
+          class="ru.dubov.vtb.MusicPlayer"
+          scope="prototype">
         <property name="musicList">
             <list>
                 <ref bean="musicBean1"/>
