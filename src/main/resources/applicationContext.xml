@@ -7,54 +7,11 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+    <context:component-scan base-package = "ru.dubov.vtb.lesson13" />
 
-    <bean id="testBean"
-          class="ru.dubov.vtb.TestBean">
-        <constructor-arg value="Boris"/>
-    </bean>
-
-
-    <bean id="musicBean1"
-          class="ru.dubov.vtb.ClassicalMusic"
-          scope="prototype"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic">
-    </bean>
-    <bean id="musicBean2"
-          class="ru.dubov.vtb.PopMusic">
-    </bean>
-    <bean id="musicBean3"
-          class="ru.dubov.vtb.RockMusic">
-    </bean>
-
-
-    <bean id="musicPlayerBean"
-          class="ru.dubov.vtb.MusicPlayer"
-          scope="prototype"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy">
-        <constructor-arg ref="musicBean2"/>
-    </bean>
-    <bean id="musicPlayerBeanBySetter"
-          class="ru.dubov.vtb.MusicPlayer">
-        <property name="music" ref="musicBean1"/>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
-    <bean id="musicPlayerWithList"
-          class="ru.dubov.vtb.MusicPlayer"
-          scope="prototype">
-        <property name="musicList">
-            <list>
-                <ref bean="musicBean1"/>
-                <ref bean="musicBean2"/>
-                <ref bean="musicBean3"/>
-            </list>
-        </property>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
+    <bean id="camera" class="ru.dubov.vtb.lesson13.CameraImpl">
+        <property name="name" value="Canon"/>
+        <property name="cameraRoll" ref="cameraRoll"/>
     </bean>
 
 </beans>
